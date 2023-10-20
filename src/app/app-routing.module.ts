@@ -16,6 +16,10 @@ const routes: Routes = [
     path: AppRoutes.USERS,
     loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
   },
+  {
+    path: AppRoutes.EXERCISE,
+    loadChildren: () => import('./exercise/exercise.module').then(m => m.ExerciseModule)
+  },
   // {
   //   path: AppRoutes.ERROR_404,
   //   component: Error404PageComponent

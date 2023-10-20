@@ -13,6 +13,7 @@ export class AppRoutes {
   public static DASHBOARD:string          = 'dashboard';
   public static MESSAGES:string           = 'messages';
   public static USERS:string              = 'users';
+  public static EXERCISE:string           = 'exercise';
   public static POSTS:string              = 'posts';
   public static CATEGORIES:string         = 'categories';
   public static ROLES:string              = 'roles';
