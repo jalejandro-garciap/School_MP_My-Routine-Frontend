@@ -41,7 +41,7 @@
     <ng-container matColumnDef="log">
       <th mat-header-cell *matHeaderCellDef mat-sort-header class="custom-th">LOGS</th>
       <td mat-cell *matCellDef="let row">
-        <button mat-icon-button (click)="openLogModal()">
+        <button mat-icon-button (click)="openLogModal( row.id )">
           <mat-icon>manage_search</mat-icon>
         </button>
       </td>

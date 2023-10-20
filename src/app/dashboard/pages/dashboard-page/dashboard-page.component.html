@@ -2,12 +2,16 @@
 
   <div class="row gap-2">
 
-    <div class="col-12 col-sm-6 border">
-      <app-chart></app-chart>
+    <div class="col border">
+      <h1 class="text-center">Lineas del tren</h1>
+      <app-chart [labels]="labels2" [data]="data2"></app-chart>
     </div>
 
-    <div class="col-12 col-sm">
-      <app-chart></app-chart>
+    <div class="col border">
+      <div class="d-flex flex-column align-items-center justify-content-center h-100">
+        <h1 class="text-center">Pasajeros</h1>
+        <app-chart [labels]="labels1" [data]="data1" chartType="bar" class="w-100"></app-chart>
+      </div>
     </div>
 
   </div>

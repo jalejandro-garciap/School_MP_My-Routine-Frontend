@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
@@ -10,9 +10,19 @@ import DataLabelsPlugin from 'chartjs-plugin-datalabels';
   templateUrl: './chart.component.html',
   styleUrls: ['./chart.component.scss']
 })
-export class ChartComponent {
+export class ChartComponent implements OnInit {
 
   @ViewChild(BaseChartDirective) chart: BaseChartDirective | undefined;
+
+  @Input()
+  public labels: string[] = [];
+
+  @Input()
+  public data: number[] = [];
+
+  @Input()
+  public chartType:string = 'pie';
+
 
   // Pie
   public pieChartOptions: ChartConfiguration['options'] = {
@@ -31,16 +41,45 @@ export class ChartComponent {
       },
     },
   };
+
   public pieChartData: ChartData<'pie', number[], string | string[]> = {
-    labels: [['Download', 'Sales'], ['In', 'Store', 'Sales'], 'Mail Sales'],
+    labels: ['Download', 'Sales', 'Mail Sales'], //* LABELS
     datasets: [
       {
-        data: [300, 500, 100],
+        data: [300, 500, 100], //* DATA
       },
     ],
   };
+
   public pieChartType: ChartType = 'pie';
   public pieChartPlugins = [DataLabelsPlugin];
+
+
+  constructor() {}
+
+  ngOnChanges(changes: SimpleChanges) {
+    // ! === data ===
+    if( (changes as any).data  || (changes as any).labels) { 
+      this.data = this.data;
+      this.labels = this.labels;
+      this.ngOnInit();
+    }
+
+  }
+
+  ngOnInit(): void {
+
+    this.pieChartType = (this.chartType as ChartType);
+
+    this.pieChartData = this.pieChartData = {
+      labels: this.labels, //* LABELS
+      datasets: [
+        {
+          data: this.data, //* DATA
+        },
+      ],
+    };
+  }
 
   // events
   public chartClicked({
@@ -61,105 +100,6 @@ export class ChartComponent {
     active: object[];
   }): void {
     console.log(event, active);
-  }
-
-  changeLabels(): void {
-    const words = [
-      'hen',
-      'variable',
-      'embryo',
-      'instal',
-      'pleasant',
-      'physical',
-      'bomber',
-      'army',
-      'add',
-      'film',
-      'conductor',
-      'comfortable',
-      'flourish',
-      'establish',
-      'circumstance',
-      'chimney',
-      'crack',
-      'hall',
-      'energy',
-      'treat',
-      'window',
-      'shareholder',
-      'division',
-      'disk',
-      'temptation',
-      'chord',
-      'left',
-      'hospital',
-      'beef',
-      'patrol',
-      'satisfied',
-      'academy',
-      'acceptance',
-      'ivory',
-      'aquarium',
-      'building',
-      'store',
-      'replace',
-      'language',
-      'redeem',
-      'honest',
-      'intention',
-      'silk',
-      'opera',
-      'sleep',
-      'innocent',
-      'ignore',
-      'suite',
-      'applaud',
-      'funny',
-    ];
-    const randomWord = () => words[Math.trunc(Math.random() * words.length)];
-    this.pieChartData.labels = new Array(3).map((_) => randomWord());
-
-    this.chart?.update();
-  }
-
-  addSlice(): void {
-    if (this.pieChartData.labels) {
-      this.pieChartData.labels.push(['Line 1', 'Line 2', 'Line 3']);
-    }
-
-    this.pieChartData.datasets[0].data.push(400);
-
-    this.chart?.update();
-  }
-
-  removeSlice(): void {
-    if (this.pieChartData.labels) {
-      this.pieChartData.labels.pop();
-    }
-
-    this.pieChartData.datasets[0].data.pop();
-
-    this.chart?.update();
-  }
-
-  changeLegendPosition(): void {
-    if (this.pieChartOptions?.plugins?.legend) {
-      this.pieChartOptions.plugins.legend.position =
-        this.pieChartOptions.plugins.legend.position === 'left'
-          ? 'top'
-          : 'left';
-    }
-
-    this.chart?.render();
-  }
-
-  toggleLegend(): void {
-    if (this.pieChartOptions?.plugins?.legend) {
-      this.pieChartOptions.plugins.legend.display =
-        !this.pieChartOptions.plugins.legend.display;
-    }
-
-    this.chart?.render();
   }
 
 }

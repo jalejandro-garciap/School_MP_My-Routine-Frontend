@@ -68,9 +68,9 @@ export class UsersTableComponent {
     }
   }
 
-  openLogModal(): void {
+  openLogModal( id:number ): void {
     const dialogRef = this.dialog.open(LogModalComponent, {
-      data: { id: '' } // this value is empty to it can be created
+      data: { id:id } // this value is empty to it can be created
     });
   }
 

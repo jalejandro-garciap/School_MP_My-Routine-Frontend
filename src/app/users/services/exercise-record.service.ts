@@ -14,8 +14,12 @@ export class ExerciseRecordService {
 
   constructor(private _http: HttpClient) { }
 
-  getByUserId(id:string) {
-    return this._http.get<ApiResponse<ExerciseRecord[]>>(`${this.BASE_API}/${this.PATH_API}/${id}`);
+  getByUserId(id:number) {
+    return this._http.get<ApiResponse<ExerciseRecord[]>>(`${this.BASE_API}/${this.PATH_API}/passenger/${id}`);
+  }
+
+  getAll() {
+    return this._http.get<ApiResponse<ExerciseRecord[]>>(`${this.BASE_API}/${this.PATH_API}`);
   }
 
 }

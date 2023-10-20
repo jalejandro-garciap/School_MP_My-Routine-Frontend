@@ -5,7 +5,7 @@ import { ExerciseRecord, Passenger } from '../../interfaces/exercise-record.inte
 import { User } from '../../interfaces/user.interface';
 
 interface ModalData {
-  id:string;
+  id:number;
 }
 
 @Component({
