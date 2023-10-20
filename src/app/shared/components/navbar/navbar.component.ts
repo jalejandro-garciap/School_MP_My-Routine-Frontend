@@ -17,7 +17,6 @@ export class NavbarComponent {
   public navItems:NavItem[] = [
     { title: 'Dashboard',         icon: 'donut_large',        url: AppRoutes.DASHBOARD},
     { title: 'Users',             icon: 'group',              url: AppRoutes.USERS},
-    // { title: 'Excercie record',   icon: 'dashboard',          url: AppRoutes.DASHBOARD},
     { title: 'Exercie',           icon: 'fitness_center',     url: AppRoutes.MESSAGES}
   ]
 }

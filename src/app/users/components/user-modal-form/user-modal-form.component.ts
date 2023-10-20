@@ -6,7 +6,6 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { UsersService } from '../../services/users.service';
 import { User } from '../../interfaces/user.interface';
 import { Trim } from '../../../shared/utils/trim.class';
-import { RolesService } from 'src/app/roles/services/roles.service';
 
 
 @Component({
@@ -33,7 +32,6 @@ export class UserModalFormComponent {
     @Inject(MAT_DIALOG_DATA) public data: any,
     public dialogRef: MatDialogRef<UserModalFormComponent>,
     private _usersService: UsersService,
-    private _rolesService: RolesService,
     // private _toastService: ToastsService,
     private _fb: FormBuilder
   ) {}
