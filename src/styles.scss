@@ -1,0 +1,48 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin     : 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.between-content {
+  display        : flex;
+  justify-content: space-between;
+  align-items    : center;
+}
+
+// Modal form size
+.modal-container {
+  width: 500px;
+}
+
+// Searcher table
+.custom-seach-input {
+  width    : 100% !important;
+  font-size: 16px;
+}
+
+.confirm-modal-container {
+  width: 400px;
+}
+
+@media screen and (max-width: 560px) {
+  /* Aquí colocas los estilos CSS que deseas aplicar a pantallas menores de 560px */
+  .modal-container {
+    width: 100%;
+  }
+
+  .confirm-modal-container {
+    width: 100%;
+  }
+
+}

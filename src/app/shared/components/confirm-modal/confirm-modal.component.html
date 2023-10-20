@@ -1,0 +1,15 @@
+<div class="confirm-modal-container  p-4">
+  <h1 class="mt-3 text-center">{{ title }}</h1>
+  <p class="text-center">{{ body }}</p>
+
+  <div class="row gap-2">
+    <button class="col btn btn-danger" (click)="closeModal( false )" color="warn">
+      <i class="fa-solid fa-x"></i>
+      cancelar
+    </button>
+    <button class="col btn btn-success" (click)="closeModal( true )" color="primary">
+      <i class="fa-solid fa-check"></i>
+      aceptar
+    </button>
+  </div>
+</div>

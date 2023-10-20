@@ -1,0 +1,20 @@
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12 px-4 py-2 bg-white rounded-2 shadow-sm">
+      <app-role-navbar (onCreate)="onCreate( $event )">
+      </app-role-navbar>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5">
+  <div class="row">
+    <div class="col-12 px-4 py-2 bg-white rounded-2 shadow-sm">
+      <app-roles-table 
+        [roles]="roles"
+        (onId)="editById( $event )"
+        (onDeleteById)="onDeleteById( $event )">
+      </app-roles-table>
+    </div>
+  </div>
+</div>

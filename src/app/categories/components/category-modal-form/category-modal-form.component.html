@@ -1,0 +1,50 @@
+<div class="modal-container">
+
+  <!-- TITLE -->
+  <div mat-dialog-title class="d-flex align-items-baseline">
+    <mat-icon class="mr-2">{{modalIcon}}</mat-icon>
+    <h2>{{ buttonTitle }} {{ pageName }}</h2>
+  </div>
+
+  <!-- BODY -->
+  <div mat-dialog-content>
+    <!-- Form -->
+    <form [formGroup]="myForm" autocomplete="off" (ngSubmit)="submit()" class="p-0 p-sm-3">
+
+      <mat-form-field class="w-100">
+        <mat-label>Name</mat-label>
+        <input type="text" matInput formControlName="name">
+      </mat-form-field>
+
+      <mat-form-field class="w-100">
+        <mat-label>Category</mat-label>
+        <textarea matInput formControlName="description"  placeholder="Description"></textarea>
+      </mat-form-field>
+
+      <!-- <button mat-stroked-button type="button" color="basic" class="w-100 mb-3">
+        <mat-icon>add_a_photo</mat-icon>
+        Subir foto
+      </button> -->
+
+      <!-- Buttons -->
+      <div mat-dialog-actions class="row justify-content-between p-0">
+        <div class="col-6 p-1">
+          <button mat-raised-button class="w-100" type="button" (click)="close()">
+            Cerrar
+          </button>
+        </div>
+        <div class="col-6 p-1">
+          <button mat-raised-button class="w-100" color="primary" type="submit"
+                 [disabled]="myForm.invalid">
+            <!-- <mat-icon class="mr-2">{{modalIcon}}</mat-icon> -->
+            {{ buttonTitle }}
+          </button>
+        </div>
+      </div>
+      <!-- END Buttons -->
+
+    </form>
+
+  </div>
+
+</div>
