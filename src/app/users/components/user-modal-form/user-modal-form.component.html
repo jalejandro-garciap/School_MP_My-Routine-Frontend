@@ -48,12 +48,12 @@
       <!-- Buttons -->
       <div mat-dialog-actions class="row justify-content-between p-0">
         <div class="col-6 p-1">
-          <button mat-raised-button class="w-100" type="button" (click)="close()">
+          <button mat-raised-button [type]="submit" class="w-100" type="button" (click)="close()">
             Cerrar
           </button>
         </div>
         <div class="col-6 p-1">
-          <button mat-raised-button class="w-100" color="primary" type="submit"
+          <button mat-raised-button [type]="submit" class="w-100" color="primary" type="submit"
                  [disabled]="myForm.invalid">
             <!-- <mat-icon class="mr-2">{{modalIcon}}</mat-icon> -->
             {{ buttonTitle }}

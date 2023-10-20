@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+
 import { User } from '../../interfaces/user.interface';
 import { UsersService } from '../../services/users.service';
-import { MatDialog } from '@angular/material/dialog';
 import { ConfirmModalData } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 import { ConfirmModalService } from 'src/app/shared/services/confirm-modal.service';
 import { UserModalFormComponent } from '../../components/user-modal-form/user-modal-form.component';
@@ -17,7 +18,6 @@ export class UsersPageComponent {
 
   constructor(
     private _confirmModalService: ConfirmModalService,
-    // private _toastService: ToastCustomService,
     private _usersService: UsersService,
     private _dialog: MatDialog,
   ) {}

@@ -9,6 +9,7 @@ import { UserNavbarComponent } from './components/user-navbar/user-navbar.compon
 import { UsersTableComponent } from './components/users-table/users-table.component';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { LogModalComponent } from './components/log-modal/log-modal.component';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     UserModalButtonComponent,
     UserModalFormComponent,
     UserNavbarComponent,
-    UsersTableComponent
+    UsersTableComponent,
+    LogModalComponent
   ],
   imports: [
     CommonModule,

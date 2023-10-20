@@ -3,6 +3,8 @@ import { User } from '../../interfaces/user.interface';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { MatDialog } from '@angular/material/dialog';
+import { LogModalComponent } from '../log-modal/log-modal.component';
 
 @Component({
   selector: 'app-users-table',
@@ -26,7 +28,9 @@ export class UsersTableComponent {
   public displayedColumns: string[] = ['firstName', 'lastName', 'email', 'passengerType', 'log', 'actions'];
   public dataSource = new MatTableDataSource<User>;
 
-  constructor() {
+  constructor(
+    public dialog: MatDialog
+  ) {
     this.dataSource = new MatTableDataSource(this.users);
   }
 
@@ -62,6 +66,12 @@ export class UsersTableComponent {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+  openLogModal(): void {
+    const dialogRef = this.dialog.open(LogModalComponent, {
+      data: { id: '' } // this value is empty to it can be created
+    });
   }
 
   get hasDataTable() {
