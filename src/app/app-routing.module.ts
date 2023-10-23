@@ -2,23 +2,25 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 import { AppRoutes } from './routes.routing';
+import { canActivateAuth, canMatchAuth, canMatchIsNotAutenticated } from './auth/guards/auth.guard';
 
 const routes: Routes = [
   {
     path: AppRoutes.AUTH,
     loadChildren: () => import('./auth/auth.module').then( m => m.AuthModule ),
+    canMatch: [canMatchIsNotAutenticated]
   },
   {
     path: AppRoutes.DASHBOARD,
-    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule)
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
+    canActivate: [canActivateAuth],
+    canMatch: [canMatchAuth]
   },
   {
     path: AppRoutes.USERS,
-    loadChildren: () => import('./users/users.module').then(m => m.UsersModule)
-  },
-  {
-    path: AppRoutes.EXERCISE,
-    loadChildren: () => import('./exercise/exercise.module').then(m => m.ExerciseModule)
+    loadChildren: () => import('./users/users.module').then(m => m.UsersModule),
+    canActivate: [canActivateAuth],
+    canMatch: [canMatchAuth]
   },
   // {
   //   path: AppRoutes.ERROR_404,
@@ -26,7 +28,7 @@ const routes: Routes = [
   // },
   {
     path: AppRoutes.ANY_ROUTE,
-    redirectTo: AppRoutes.USERS,
+    redirectTo: AppRoutes.AUTH,
   }
 ];
 

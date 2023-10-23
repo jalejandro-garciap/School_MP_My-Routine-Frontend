@@ -36,10 +36,6 @@ export class DashboardPageComponent implements OnInit {
         this.labels2 = ['LINE 1', 'LINE 2', 'LINE 3'];
         this.data2 = [...[line1, line2, line3]];
 
-        
-        console.log({CHILDREN, STUDENTS, TEACHERS, DISABLED, ELDERLY});
-        console.log([CHILDREN, STUDENTS, TEACHERS, DISABLED, ELDERLY]);
-        
         const sort = [CHILDREN, STUDENTS, TEACHERS, DISABLED, ELDERLY].sort(function(a, b) {
           return b - a;
         });
@@ -63,8 +59,6 @@ export class DashboardPageComponent implements OnInit {
           if(top === ELDERLY_VALUE) newLabels1.push('ELDERLY');
         });
 
-        console.log(newLabels1);
-        
         this.labels1 = [...newLabels1];
         this.data1 = [...top3];
       }

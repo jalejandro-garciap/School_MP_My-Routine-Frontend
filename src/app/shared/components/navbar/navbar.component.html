@@ -22,7 +22,7 @@
             {{ navItem.title }}
           </a>
         </li> -->
-        
+
         <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Link
@@ -38,17 +38,27 @@
 
       <!--* RIGHT MENU -->
       <form class="d-flex" role="search">
-        <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+
+        <ul *ngIf="isAutenticate" class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll"
+          style="--bs-scroll-height: 100px;">
           <li *ngFor="let navItem of navItems" class="nav-item">
             <a class="nav-link py-4 px-3" [routerLink]="navItem.url">
               <div class="d-flex align-items-end">
-                  <mat-icon class="me-1">{{ navItem.icon }}</mat-icon>
-                  {{ navItem.title }}
+                <mat-icon class="me-1">{{ navItem.icon }}</mat-icon>
+                {{ navItem.title }}
               </div>
             </a>
           </li>
+
+          <div class="d-flex align-items-center" *ngIf="isAutenticate">
+            <button mat-raised-button color="primary" type="button" (click)="onLogout()">
+              Logout
+            </button>
+          </div>
         </ul>
       </form>
+
+
     </div>
   </div>
 

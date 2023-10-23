@@ -35,7 +35,6 @@ export class UsersPageComponent {
   }
 
   onCreate(user: User):void {
-    console.log('user parent', user);
     this._usersService.create( user ).subscribe({
       next: response => {
         const dbUser = response.data; 

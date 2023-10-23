@@ -28,8 +28,6 @@ export class LogModalComponent implements OnInit {
 
     this._exerciseRecordService.getByUserId(this.data.id).subscribe({
       next: response => {
-        console.log(response);
-
         if( !response.success ) {
           throw new Error(response.messsage);
         }
