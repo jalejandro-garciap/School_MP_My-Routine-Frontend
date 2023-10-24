@@ -1,3 +1,3 @@
 export const environment = {
-  BASE_API: 'http://localhost:8080/api',
+  BASE_API: 'http://localhost:8080/MiRutina/api',
 };
