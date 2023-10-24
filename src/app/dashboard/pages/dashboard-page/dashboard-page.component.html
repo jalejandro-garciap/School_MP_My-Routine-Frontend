@@ -3,14 +3,35 @@
   <div class="row gap-2">
 
     <div class="col border">
-      <h1 class="text-center">Lineas del tren</h1>
-      <app-chart [labels]="labels2" [data]="data2"></app-chart>
+      <h1 class="text-center">Ejercicios del día</h1>
+      <!-- LIST -->
+      <div class="list-group">
+        <div *ngFor="let completedChallenge of completedChallenges" class="list-group-item list-group-item-action">
+          <div class="d-flex w-100 justify-content-between">
+            <h5 class="mb-1">
+              {{ completedChallenge.passenger.firstName }} {{ completedChallenge.passenger.lastName }}
+
+              <span class="badge text-bg-secondary">{{ completedChallenge.exercise.exerciseType }}</span>
+            </h5>
+
+
+            <small class="d-flex align-items-center">
+              <mat-icon class="me-1">schedule</mat-icon>
+              {{ completedChallenge.duration }} Duration
+            </small>
+          </div>
+          <p class="mb-1">{{ completedChallenge.passenger.email }}</p>
+          <small class="text-body-secondary">{{ completedChallenge.station }}</small>
+        </div>
+      </div>
+      <!-- END LIST -->
+
     </div>
 
     <div class="col border">
       <div class="d-flex flex-column align-items-center justify-content-center h-100">
         <h1 class="text-center">Pasajeros</h1>
-        <app-chart [labels]="labels1" [data]="data1" chartType="bar" class="w-100"></app-chart>
+        <app-chart [labels]="labels1" [data]="data1" chartType="pie" class="w-100"></app-chart>
       </div>
     </div>
 

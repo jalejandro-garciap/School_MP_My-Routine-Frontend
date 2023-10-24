@@ -12,9 +12,7 @@ export class DashboardPageComponent implements OnInit {
   public labels1: string[] = [];
   public data1: number[] = [];
 
-  
-  public labels2: string[] = [];
-  public data2: number[] = [];
+  public completedChallenges: ExerciseRecord[] = [];
 
   constructor(
     private _exerciseRecord: ExerciseRecordService
@@ -22,19 +20,12 @@ export class DashboardPageComponent implements OnInit {
     
     this._exerciseRecord.getAll().subscribe({
       next: response => {
-        
-        const line1: number = response.data.filter( exerciseRecord => exerciseRecord.station === 'L1' ).length;
-        const line2: number = response.data.filter( exerciseRecord => exerciseRecord.station === 'L2' ).length;
-        const line3: number = response.data.filter( exerciseRecord => exerciseRecord.station === 'L3' ).length;
-
+      
         const CHILDREN = response.data.filter( exercise => exercise.passenger.passengerType === 'CHILDREN' ).length;
         const STUDENTS = response.data.filter( exercise => exercise.passenger.passengerType === 'STUDENTS' ).length;
         const TEACHERS = response.data.filter( exercise => exercise.passenger.passengerType === 'TEACHERS' ).length;
         const DISABLED = response.data.filter( exercise => exercise.passenger.passengerType === 'DISABLED' ).length;
         const ELDERLY = response.data.filter( exercise => exercise.passenger.passengerType === 'ELDERLY' ).length;        
-
-        this.labels2 = ['LINE 1', 'LINE 2', 'LINE 3'];
-        this.data2 = [...[line1, line2, line3]];
 
         const sort = [CHILDREN, STUDENTS, TEACHERS, DISABLED, ELDERLY].sort(function(a, b) {
           return b - a;
@@ -68,8 +59,17 @@ export class DashboardPageComponent implements OnInit {
     // this.data2 = [18, 30, 9];
 
   }
-  ngOnInit(): void {
 
+  ngOnInit(): void {
+    this.getCompletedChallengeToday();
+  }
+
+  getCompletedChallengeToday():void {
+    this._exerciseRecord.getAllWhoCompletedChallengeToday().subscribe({
+      next: completedChallenges => {
+        this.completedChallenges = completedChallenges;
+      }
+    });
   }
 
 

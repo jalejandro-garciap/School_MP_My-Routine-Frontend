@@ -32,4 +32,8 @@ export class ExerciseRecordService {
     return this._http.get<ApiResponse<ExerciseRecord[]>>(`${this.BASE_API}/${this.PATH_API}`,  { headers: this.headers });
   }
 
+  getAllWhoCompletedChallengeToday() {
+    return this._http.get<ExerciseRecord[]>(`${this.BASE_API}/${this.PATH_API}/completed-challenge`,  { headers: this.headers });
+  }
+
 }
