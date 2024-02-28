@@ -3,5 +3,5 @@ export const environment = {
   BASE_API: (window.location.protocol === 'http:'
               ? 'http://'
               : 'https://')
-              + window.location.host + '/MiRutina/api',
+              + window.location.host + '/api',
 };
