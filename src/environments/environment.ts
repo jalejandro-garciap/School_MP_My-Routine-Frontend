@@ -3,5 +3,5 @@ export const environment = {
   BASE_API: (window.location.protocol === 'http:'
               ? 'http://'
               : 'https://')
-              + window.location.host + 'proyectomodularbackend-production.up.railway.app/api',
+              + 'proyectomodularbackend-production.up.railway.app/api',
 };
