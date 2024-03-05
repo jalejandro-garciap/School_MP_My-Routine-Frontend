@@ -18,8 +18,8 @@ export class NavbarComponent {
   public logoRoute = AppRoutes.USERS;
 
   public navItems:NavItem[] = [
-    { title: 'Dashboard',         icon: 'donut_large',        url: AppRoutes.DASHBOARD},
-    { title: 'Users',             icon: 'group',              url: AppRoutes.USERS}
+    { title: 'Dashboard',         icon: 'donut_large',        url: AppRoutes.DASHBOARD },
+    { title: 'History',           icon: 'group',              url: AppRoutes.USERS }
   ]
 
   constructor(private _authService:AuthService) {}
