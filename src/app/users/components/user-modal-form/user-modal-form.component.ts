@@ -19,7 +19,13 @@ export class UserModalFormComponent {
   public userId = '';
 
   public users: User[] = [];
-  public passengerTypes: string[] = ['STUDENTS', 'TEACHERS', 'DISABLED', 'ELDERLY', 'CHILDREN'];
+  public passengerTypes: string[] = [
+    'Children',
+    'Student',
+    'Teacher',
+    'Disabled',
+    'Elderly'
+  ];
   
   public myForm: FormGroup = this._fb.group({
     firstName       : [''],
