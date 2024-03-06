@@ -1,0 +1,15 @@
+<div class="container mt-5">
+  <div class="row">
+
+    <div *ngIf="isLoading; else historyData" class="text-center">
+      <app-circle-loader></app-circle-loader>
+      <p>loading data...</p>
+    </div>
+  
+    <ng-template #historyData>
+      <app-histories-table [histories]="histories">
+      </app-histories-table>
+    </ng-template>
+    
+  </div>
+</div>

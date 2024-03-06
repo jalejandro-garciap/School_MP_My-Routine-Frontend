@@ -28,10 +28,12 @@ const routes: Routes = [
     canActivate: [canActivateAuth],
     canMatch: [canMatchAuth]
   },
-  // {
-  //   path: AppRoutes.ERROR_404,
-  //   component: Error404PageComponent
-  // },
+  {
+    path: AppRoutes.HISTORIES,
+    loadChildren: () => import('./histories/histories.module').then(m => m.HistoriesModule),
+    canActivate: [canActivateAuth],
+    canMatch: [canMatchAuth]
+  },
   {
     path: AppRoutes.ANY_ROUTE,
     redirectTo: AppRoutes.AUTH,

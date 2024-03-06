@@ -21,7 +21,8 @@ export class NavbarComponent {
   public navItems:NavItem[] = [
     { title: 'Dashboard',         icon: 'donut_large',        url: AppRoutes.DASHBOARD },
     { title: 'Passenger',         icon: 'group',              url: AppRoutes.USERS },
-    { title: 'Members',           icon: 'face',               url: AppRoutes.MEMBERS }
+    { title: 'Members',           icon: 'face',               url: AppRoutes.MEMBERS },
+    { title: 'Histories',         icon: 'schedule',           url: AppRoutes.HISTORIES }
   ]
 
   constructor(private _authService:AuthService) {}
