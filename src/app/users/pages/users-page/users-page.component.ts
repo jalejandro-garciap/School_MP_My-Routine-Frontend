@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 
-import { User } from '../../interfaces/user.interface';
-import { UsersService } from '../../services/users.service';
 import { ConfirmModalData } from 'src/app/shared/components/confirm-modal/confirm-modal.component';
 import { ConfirmModalService } from 'src/app/shared/services/confirm-modal.service';
 import { UserModalFormComponent } from '../../components/user-modal-form/user-modal-form.component';
+import { PassengersService } from '../../services/passengers.service';
+import { Passenger } from '../../interfaces/passenger.interface';
 
 @Component({
   selector: 'app-users-page',
@@ -14,32 +14,32 @@ import { UserModalFormComponent } from '../../components/user-modal-form/user-mo
 })
 export class UsersPageComponent {
 
-  public users: User[] = [];
+  public passengers: Passenger[] = [];
 
   constructor(
     private _confirmModalService: ConfirmModalService,
-    private _usersService: UsersService,
+    private _passengersService: PassengersService,
     private _dialog: MatDialog,
   ) {}
 
   ngOnInit(): void {
-    this.loadUsers();
+    this.loadPassengers();
   }
 
-  loadUsers():void {
-    this._usersService.getUsers().subscribe({
+  loadPassengers():void {
+    this._passengersService.getPassengers().subscribe({
       next: response => {
-        this.users = response.data;
+        this.passengers = response.data;
       }
     })
   }
 
-  onCreate(user: User):void {
-    this._usersService.create( user ).subscribe({
+  onCreate(passenger: Passenger):void {
+    this._passengersService.create( passenger ).subscribe({
       next: response => {
         const dbUser = response.data; 
-        this.users.push(dbUser);
-        this.users = [...this.users];
+        this.passengers.push(dbUser);
+        this.passengers = [...this.passengers];
         // this._toastService.success('Proyecto creado', `Se creó <b>${dbUser.name}</b> correctamente`);
       },
       // error: (error:HttpErrorResponse) => {this._toastService.errorHandler(error)}
@@ -47,18 +47,18 @@ export class UsersPageComponent {
   }
 
   onDeleteById(id:string) {
-    this._usersService.getById( id ).subscribe({
+    this._passengersService.getById( id ).subscribe({
       next: response => {
         const dbUser = response.data;
         const message:ConfirmModalData = { body: `<< ${dbUser.firstName} >>` };
         this._confirmModalService.openModal(message).subscribe(accept => {
           if( !accept ) return;
 
-          this._usersService.deleteById( id ).subscribe({
+          this._passengersService.deleteById( id ).subscribe({
             next: userDeleted => {
-              const idx: number = this.users.findIndex(m => m.id === dbUser.id);
-              this.users.splice(idx, 1);
-              this.users = [...this.users];
+              const idx: number = this.passengers.findIndex(m => m.id === dbUser.id);
+              this.passengers.splice(idx, 1);
+              this.passengers = [...this.passengers];
               // this._toastService.info('Proyecto eliminado', `Se eliminó <b>${dbProject.name}</b> correctamente`);
             }
           });
@@ -73,15 +73,15 @@ export class UsersPageComponent {
       data: { id }
     });
 
-    dialogRef.afterClosed().subscribe( (user:User)  => {
-      if( !user ) return;
+    dialogRef.afterClosed().subscribe( (passenger:Passenger)  => {
+      if( !passenger ) return;
 
-      this._usersService.update(user.id!.toString(), user).subscribe({
+      this._passengersService.update(passenger.id!.toString(), passenger).subscribe({
         next: response => {
           const userUpdated = response.data; 
-          const idx:number = this.users.findIndex( p => p.id === userUpdated.id);
-          this.users[idx] = userUpdated;
-          this.users = [...this.users];
+          const idx:number = this.passengers.findIndex( p => p.id === userUpdated.id);
+          this.passengers[idx] = userUpdated;
+          this.passengers = [...this.passengers];
           // this._toastService.info('Proyecto editado', `Se editó <b>${userUpdated.name}</b> correctamente`);
         },
         // error: (error:HttpErrorResponse) => {this._toastService.errorHandler(error)}

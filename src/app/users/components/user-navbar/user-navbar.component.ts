@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { User } from '../../interfaces/user.interface';
+import { Passenger } from '../../interfaces/passenger.interface';
 
 @Component({
   selector: 'app-user-navbar',
@@ -8,13 +8,13 @@ import { User } from '../../interfaces/user.interface';
 })
 export class UserNavbarComponent {
 
-  public navbarTitle = 'USUARIOS';
+  public navbarTitle = 'MEMBERS';
 
   @Output()
-  public onCreate: EventEmitter<User> = new EventEmitter();
+  public onCreate: EventEmitter<Passenger> = new EventEmitter();
 
-  onEmitte(user: User) {
-    this.onCreate.emit( user );
+  onEmitte(passenger: Passenger) {
+    this.onCreate.emit( passenger );
   }
 
 }

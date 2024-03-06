@@ -8,7 +8,6 @@ import { MemberModalFormComponent } from './components/member-modal-form/member-
 import { MemberNavbarComponent } from './components/member-navbar/member-navbar.component';
 import { MembersTableComponent } from './components/members-table/members-table.component';
 import { ReactiveFormsModule } from '@angular/forms';
-import { SharedModule } from '../shared/shared.module';
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 
 @NgModule({

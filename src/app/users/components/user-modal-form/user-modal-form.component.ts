@@ -15,7 +15,7 @@ import { Trim } from '../../../shared/utils/trim.class';
 })
 export class UserModalFormComponent {
 
-  public pageName: string = 'usuario';
+  public pageName: string = 'member';
   public userId = '';
 
   public passengerTypes: string[] = [
@@ -29,8 +29,8 @@ export class UserModalFormComponent {
   public myForm: FormGroup = this._fb.group({
     firstName       : [''],
     lastName        : [''],
-    email           : [''],
-    passengerType   : ['']
+    // email           : [''],
+    category   : ['']
   });
 
   constructor(
@@ -83,8 +83,8 @@ export class UserModalFormComponent {
 
   get buttonTitle(): string {
     return (this.userId.length === 0)
-      ? 'Crear'
-      : 'Editar';
+      ? 'Create'
+      : 'Edit';
   }
 
   get modalIcon(): string {

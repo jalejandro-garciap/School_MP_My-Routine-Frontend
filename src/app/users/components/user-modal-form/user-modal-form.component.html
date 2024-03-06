@@ -21,15 +21,14 @@
         <input type="text" matInput formControlName="lastName">
       </mat-form-field>
 
-      <mat-form-field class="w-100">
+      <!-- <mat-form-field class="w-100">
         <mat-label>Correo electrónico</mat-label>
         <input type="text" matInput formControlName="email" placeholder="pat@example.com">
-      </mat-form-field>
-
+      </mat-form-field> -->
 
       <mat-form-field class="w-100">
         <mat-label>PassengerType</mat-label>
-        <mat-select formControlName="passengerType">
+        <mat-select formControlName="category">
           <mat-option *ngFor="let passengerType of passengerTypes" [value]="passengerType">
             {{ passengerType }}
           </mat-option>

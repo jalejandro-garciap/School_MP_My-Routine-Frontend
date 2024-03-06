@@ -20,8 +20,8 @@ export class NavbarComponent {
   // https://fonts.google.com/icons ICONS
   public navItems:NavItem[] = [
     { title: 'Dashboard',         icon: 'donut_large',        url: AppRoutes.DASHBOARD },
-    { title: 'History',           icon: 'group',              url: AppRoutes.USERS },
-    { title: 'Members',           icon: 'face',              url: AppRoutes.MEMBERS }
+    { title: 'Passenger',         icon: 'group',              url: AppRoutes.USERS },
+    { title: 'Members',           icon: 'face',               url: AppRoutes.MEMBERS }
   ]
 
   constructor(private _authService:AuthService) {}

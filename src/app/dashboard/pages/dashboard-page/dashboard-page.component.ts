@@ -21,37 +21,37 @@ export class DashboardPageComponent implements OnInit {
     this._exerciseRecord.getAll().subscribe({
       next: response => {
       
-        const CHILDREN = response.data.filter( exercise => exercise.passenger.passengerType === 'CHILDREN' ).length;
-        const STUDENTS = response.data.filter( exercise => exercise.passenger.passengerType === 'STUDENTS' ).length;
-        const TEACHERS = response.data.filter( exercise => exercise.passenger.passengerType === 'TEACHERS' ).length;
-        const DISABLED = response.data.filter( exercise => exercise.passenger.passengerType === 'DISABLED' ).length;
-        const ELDERLY = response.data.filter( exercise => exercise.passenger.passengerType === 'ELDERLY' ).length;        
+        // const CHILDREN = response.data.filter( exercise => exercise.passenger.passengerType === 'CHILDREN' ).length;
+        // const STUDENTS = response.data.filter( exercise => exercise.passenger.passengerType === 'STUDENTS' ).length;
+        // const TEACHERS = response.data.filter( exercise => exercise.passenger.passengerType === 'TEACHERS' ).length;
+        // const DISABLED = response.data.filter( exercise => exercise.passenger.passengerType === 'DISABLED' ).length;
+        // const ELDERLY = response.data.filter( exercise => exercise.passenger.passengerType === 'ELDERLY' ).length;        
 
-        const sort = [CHILDREN, STUDENTS, TEACHERS, DISABLED, ELDERLY].sort(function(a, b) {
-          return b - a;
-        });
+        // const sort = [CHILDREN, STUDENTS, TEACHERS, DISABLED, ELDERLY].sort(function(a, b) {
+        //   return b - a;
+        // });
 
 
-        const CHILDREN_VALUE = CHILDREN;
-        const STUDENTS_VALUE = STUDENTS;
-        const TEACHERS_VALUE = TEACHERS;
-        const DISABLED_VALUE = DISABLED;
-        const ELDERLY_VALUE = ELDERLY;
+        // const CHILDREN_VALUE = CHILDREN;
+        // const STUDENTS_VALUE = STUDENTS;
+        // const TEACHERS_VALUE = TEACHERS;
+        // const DISABLED_VALUE = DISABLED;
+        // const ELDERLY_VALUE = ELDERLY;
 
 
         const newLabels1: string[] = [];
-        const top3 = sort.slice(0, 3);
+        // const top3 = sort.slice(0, 3);
 
-        top3.forEach( top => {
-          if(top === CHILDREN_VALUE) newLabels1.push('CHILDREN');
-          if(top === STUDENTS_VALUE) newLabels1.push('STUDENTS');
-          if(top === TEACHERS_VALUE) newLabels1.push('TEACHERS');
-          if(top === DISABLED_VALUE) newLabels1.push('DISABLED');
-          if(top === ELDERLY_VALUE) newLabels1.push('ELDERLY');
-        });
+        // top3.forEach( top => {
+        //   if(top === CHILDREN_VALUE) newLabels1.push('CHILDREN');
+        //   if(top === STUDENTS_VALUE) newLabels1.push('STUDENTS');
+        //   if(top === TEACHERS_VALUE) newLabels1.push('TEACHERS');
+        //   if(top === DISABLED_VALUE) newLabels1.push('DISABLED');
+        //   if(top === ELDERLY_VALUE) newLabels1.push('ELDERLY');
+        // });
 
         this.labels1 = [...newLabels1];
-        this.data1 = [...top3];
+        // this.data1 = [...top3];
       }
     });
 

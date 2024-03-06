@@ -12,29 +12,19 @@
     <!-- FIRSTNAME Column -->
     <ng-container matColumnDef="firstName">
       <th mat-header-cell *matHeaderCellDef mat-sort-header class="custom-th">FIRSTNAME</th>
-      <td mat-cell *matCellDef="let row">{{row.firstName}}</td>
+      <td mat-cell *matCellDef="let row">{{ row.firstName }}</td>
     </ng-container>
 
-    <!-- LASTNAME Column -->
-    <ng-container matColumnDef="lastName">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header class="custom-th">LASTNAME</th>
-      <td mat-cell *matCellDef="let row">{{row.lastName}}</td>
+    <!-- CATEGORY Column -->
+    <ng-container matColumnDef="category">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="custom-th">CATEGORY</th>
+      <td mat-cell *matCellDef="let row">{{ row.lastName }}</td>
     </ng-container>
 
-    <!-- EMAIL Column -->
-    <ng-container matColumnDef="email">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header class="custom-th">EMAIL</th>
-      <td mat-cell *matCellDef="let row">{{row.email}}</td>
-    </ng-container>
-
-    <!-- PASSENGERTYPE Column -->
-    <ng-container matColumnDef="passengerType">
-      <th mat-header-cell *matHeaderCellDef mat-sort-header class="custom-th">PASSENGERTYPE</th>
-      <td mat-cell *matCellDef="let row">
-        <span class="badge text-bg-primary">
-          {{row.passengerType}}
-        </span>
-      </td>
+    <!-- ACTIVE Column -->
+    <ng-container matColumnDef="active">
+      <th mat-header-cell *matHeaderCellDef mat-sort-header class="custom-th">ACTIVE</th>
+      <td mat-cell *matCellDef="let row">{{ row.active }}</td>
     </ng-container>
 
     <!-- EMAIL Column -->
@@ -42,11 +32,10 @@
       <th mat-header-cell *matHeaderCellDef mat-sort-header class="custom-th">LOGS</th>
       <td mat-cell *matCellDef="let row">
         <button mat-icon-button (click)="openLogModal( row.id )">
-          <mat-icon>manage_search</mat-icon>
+          <mat-icon class="text-primary">manage_search</mat-icon>
         </button>
       </td>
     </ng-container>
-    
     
     <!-- ACTIONS Column -->
     <ng-container matColumnDef="actions">

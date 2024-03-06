@@ -5,6 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
 import { LogModalComponent } from '../log-modal/log-modal.component';
+import { Passenger } from '../../interfaces/passenger.interface';
 
 @Component({
   selector: 'app-users-table',
@@ -13,7 +14,7 @@ import { LogModalComponent } from '../log-modal/log-modal.component';
 export class UsersTableComponent {
 
   @Input()
-  public users: User[] = [];
+  public passengers: Passenger[] = [];
 
   @Output()
   public onId: EventEmitter<string> = new EventEmitter();
@@ -24,17 +25,17 @@ export class UsersTableComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  public displayedColumns: string[] = ['firstName', 'lastName', 'email', 'passengerType', 'log', 'actions'];
-  public dataSource = new MatTableDataSource<User>;
+  public displayedColumns: string[] = ['firstName', 'category', 'active', 'log', 'actions'];
+  public dataSource = new MatTableDataSource<Passenger>;
 
   constructor(
     public dialog: MatDialog
   ) {
-    this.dataSource = new MatTableDataSource(this.users);
+    this.dataSource = new MatTableDataSource(this.passengers);
   }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource( this.users );
+    this.dataSource = new MatTableDataSource( this.passengers );
   }
 
   ngAfterViewInit() {
@@ -43,9 +44,9 @@ export class UsersTableComponent {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    // ! === users ===
-    if( (changes as any).users ) { 
-      this.dataSource.data = this.users;
+    // ! === passengers ===
+    if( (changes as any).passengers ) { 
+      this.dataSource.data = this.passengers;
     }
   }
 

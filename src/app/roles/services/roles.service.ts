@@ -14,14 +14,12 @@ export class RolesService {
   private BASE_API:string = environment.BASE_API;
   private PATH:string = 'role';
 
-  private token:string = '';
   private headers!: HttpHeaders;
 
   constructor(
     private _http: HttpClient,
     private _authService:AuthService,
   ) { 
-    this.token = this._authService.getAuthStorage()!.jwt;
     this.headers = new HttpHeaders({'Authorization': 'Bearer ' + this.token })
   }
 
@@ -44,5 +42,9 @@ export class RolesService {
   deleteById(id:string) {
     return this._http.delete<ApiResponse<Role>>(`${this.BASE_API}/${this.PATH}/${id}`, { headers: this.headers });
   }  
+
+  get token() {
+    return this._authService.getAuthStorage()!.jwt;
+  }
 
 }

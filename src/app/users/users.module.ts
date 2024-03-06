@@ -10,6 +10,7 @@ import { UsersTableComponent } from './components/users-table/users-table.compon
 import { AngularMaterialModule } from '../angular-material/angular-material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { LogModalComponent } from './components/log-modal/log-modal.component';
+import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { LogModalComponent } from './components/log-modal/log-modal.component';
     UsersRoutingModule,
     AngularMaterialModule,
     ReactiveFormsModule,
+    SharedModule,
   ]
 })
 export class UsersModule { }
