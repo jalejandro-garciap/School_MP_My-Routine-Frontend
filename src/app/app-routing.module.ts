@@ -22,6 +22,12 @@ const routes: Routes = [
     canActivate: [canActivateAuth],
     canMatch: [canMatchAuth]
   },
+  {
+    path: AppRoutes.MEMBERS,
+    loadChildren: () => import('./members/members.module').then(m => m.MembersModule),
+    canActivate: [canActivateAuth],
+    canMatch: [canMatchAuth]
+  },
   // {
   //   path: AppRoutes.ERROR_404,
   //   component: Error404PageComponent

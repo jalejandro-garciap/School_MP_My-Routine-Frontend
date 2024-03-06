@@ -13,14 +13,12 @@ export class UsersService {
   private BASE_API:string = environment.BASE_API;
   private PATH_API:string = 'passenger';
 
-  private token:string = '';
   private headers!: HttpHeaders;
 
   constructor(
     private _http: HttpClient,
     private _authService:AuthService,
   ) { 
-    this.token = this._authService.getAuthStorage()!.jwt;
     this.headers = new HttpHeaders({'Authorization': 'Bearer ' + this.token })
   }
 
@@ -42,7 +40,11 @@ export class UsersService {
   
   deleteById(id:string) {
     return this._http.delete<ApiResponse<User>>(`${this.BASE_API}/${this.PATH_API}/${id}`, { headers: this.headers });
-  }  
+  }
+
+  get token() {
+    return this._authService.getAuthStorage()!.jwt;
+  }
 
 }
  

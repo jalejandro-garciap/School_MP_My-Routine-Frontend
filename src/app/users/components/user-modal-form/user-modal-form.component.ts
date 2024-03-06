@@ -18,7 +18,6 @@ export class UserModalFormComponent {
   public pageName: string = 'usuario';
   public userId = '';
 
-  public users: User[] = [];
   public passengerTypes: string[] = [
     'Children',
     'Student',

@@ -1,19 +1,19 @@
 import { Component, EventEmitter, Input, Output, SimpleChanges, ViewChild } from '@angular/core';
-import { User } from '../../interfaces/user.interface';
+import { Member } from '../../interfaces/member.interface';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog } from '@angular/material/dialog';
-import { LogModalComponent } from '../log-modal/log-modal.component';
+import { LogModalComponent } from 'src/app/users/components/log-modal/log-modal.component';
 
 @Component({
-  selector: 'app-users-table',
-  templateUrl: './users-table.component.html'
+  selector: 'app-members-table',
+  templateUrl: './members-table.component.html'
 })
-export class UsersTableComponent {
+export class MembersTableComponent {
 
   @Input()
-  public users: User[] = [];
+  public members: Member[] = [];
 
   @Output()
   public onId: EventEmitter<string> = new EventEmitter();
@@ -24,17 +24,17 @@ export class UsersTableComponent {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  public displayedColumns: string[] = ['firstName', 'lastName', 'email', 'passengerType', 'log', 'actions'];
-  public dataSource = new MatTableDataSource<User>;
+  public displayedColumns: string[] = ['username', 'email', 'status', 'roles', 'actions'];
+  public dataSource = new MatTableDataSource<Member>;
 
   constructor(
     public dialog: MatDialog
   ) {
-    this.dataSource = new MatTableDataSource(this.users);
+    this.dataSource = new MatTableDataSource(this.members);
   }
 
   ngOnInit(): void {
-    this.dataSource = new MatTableDataSource( this.users );
+    this.dataSource = new MatTableDataSource( this.members );
   }
 
   ngAfterViewInit() {
@@ -43,9 +43,9 @@ export class UsersTableComponent {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    // ! === users ===
-    if( (changes as any).users ) { 
-      this.dataSource.data = this.users;
+    // ! === members ===
+    if( (changes as any).members ) { 
+      this.dataSource.data = this.members;
     }
   }
 

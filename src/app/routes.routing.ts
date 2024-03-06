@@ -14,6 +14,7 @@ export class AppRoutes {
 
   public static DASHBOARD:string          = 'dashboard';
   public static USERS:string              = 'users';
+  public static MEMBERS:string            = 'members';
   public static ROLES:string              = 'roles';
 
 }

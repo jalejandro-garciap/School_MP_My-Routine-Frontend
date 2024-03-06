@@ -35,6 +35,11 @@ body {
   width: 400px;
 }
 
+.custom-th {
+  background-color: #05528E !important;
+  color: white;
+}
+
 @media screen and (max-width: 560px) {
   /* Aquí colocas los estilos CSS que deseas aplicar a pantallas menores de 560px */
   .modal-container {
