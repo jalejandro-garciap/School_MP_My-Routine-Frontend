@@ -1,0 +1,58 @@
+<div class="modal-container">
+
+  <!-- TITLE -->
+  <div mat-dialog-title class="text-center">
+    <!-- <mat-icon class="mr-2">{{modalIcon}}</mat-icon> -->
+    <h2>{{ buttonTitle }} {{ pageName }}</h2>
+  </div>
+
+  <!-- BODY -->
+  <div mat-dialog-content>
+    <!-- Form -->
+    <form [formGroup]="myForm" autocomplete="off" (ngSubmit)="submit()" class="p-0 p-sm-3">
+
+      <mat-form-field class="w-100">
+        <mat-label>Name</mat-label>
+        <input type="text" matInput formControlName="name">
+      </mat-form-field>
+<!-- 
+      <mat-form-field class="w-100">
+        <mat-label>Enable</mat-label>
+        <input type="text" matInput formControlName="enable">
+      </mat-form-field>
+       -->
+      <section class="example-section">
+        <mat-checkbox formControlName="enable">Enable</mat-checkbox>
+      </section>
+
+      <mat-form-field appearance="fill" class="w-100">
+        <mat-label>Transport</mat-label>
+        <mat-select formControlName="transport">
+          <mat-option *ngFor="let transport of transports" [value]="transport.id">
+            {{transport.name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <!-- Buttons -->
+      <div mat-dialog-actions class="row justify-content-between p-0">
+        <div class="col-6 p-1">
+          <button mat-raised-button [type]="submit" class="w-100" type="button" (click)="close()">
+            Cerrar
+          </button>
+        </div>
+        <div class="col-6 p-1">
+          <button mat-raised-button [type]="submit" class="w-100" color="primary" type="submit"
+                 [disabled]="myForm.invalid">
+            <!-- <mat-icon class="mr-2">{{modalIcon}}</mat-icon> -->
+            {{ buttonTitle }}
+          </button>
+        </div>
+      </div>
+      <!-- END Buttons -->
+
+    </form>
+
+  </div>
+
+</div>

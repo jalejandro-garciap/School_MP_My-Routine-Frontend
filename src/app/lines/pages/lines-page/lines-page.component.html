@@ -1,1 +1,18 @@
-<p>lines-page works!</p>
+<div class="container my-5">
+
+  <div class="row gap-2">
+    <div class="col-2 border rounded-2 shadow-sm">
+      <app-line-navbar (onCreate)="onCreate( $event )">
+      </app-line-navbar>
+    </div>
+
+    <div class="col px-4 py-2 border bg-white rounded-2 shadow-sm">
+      <app-line-table 
+        [lines]="lines"
+        (onId)="editById( $event )"
+        (onDeleteById)="onDeleteById( $event )">
+      </app-line-table>
+    </div>
+  </div>
+
+</div>

@@ -34,8 +34,8 @@ export class LinesService {
     return this._http.post<ApiResponse<Line>>(`${this.BASE_API}/${this.PATH_API}`, line, { headers: this.headers });
   }  
 
-  update(id:string, line:Line) {
-    return this._http.put<ApiResponse<Line>>(`${this.BASE_API}/${this.PATH_API}/${id}`, line, { headers: this.headers });
+  update(line:Line) {
+    return this._http.put<ApiResponse<Line>>(`${this.BASE_API}/${this.PATH_API}`, line, { headers: this.headers });
   }
   
   deleteById(id:string) {
