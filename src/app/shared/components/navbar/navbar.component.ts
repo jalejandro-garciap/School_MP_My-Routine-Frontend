@@ -22,7 +22,10 @@ export class NavbarComponent {
     { title: 'Dashboard',         icon: 'donut_large',        url: AppRoutes.DASHBOARD },
     { title: 'Passenger',         icon: 'group',              url: AppRoutes.USERS },
     { title: 'Members',           icon: 'face',               url: AppRoutes.MEMBERS },
-    { title: 'Histories',         icon: 'schedule',           url: AppRoutes.HISTORIES }
+    { title: 'Histories',         icon: 'schedule',           url: AppRoutes.HISTORIES },
+    { title: 'Lines',             icon: 'add_road',           url: AppRoutes.LINES },
+    { title: 'Transports',        icon: 'commute',            url: AppRoutes.TRANSPORTS },
+    { title: 'Stations',          icon: 'pin_drop',           url: AppRoutes.STATIONS }
   ]
 
   constructor(private _authService:AuthService) {}

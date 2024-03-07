@@ -1,4 +1,4 @@
-import { Line } from "./line.interface";
+import { Line } from "../../lines/interfaces/line.interface";
 
 export interface Station {
   id?:        number;

@@ -1,4 +1,4 @@
-import { Transport } from "./transport.interface";
+import { Transport } from "../../transports/interfaces/transport.interface";
 
 export interface Line {
   id?:        number;

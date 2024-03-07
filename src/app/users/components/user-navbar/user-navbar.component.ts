@@ -8,7 +8,7 @@ import { Passenger } from '../../interfaces/passenger.interface';
 })
 export class UserNavbarComponent {
 
-  public navbarTitle = 'MEMBERS';
+  public navbarTitle = 'PASSENGERS';
 
   @Output()
   public onCreate: EventEmitter<Passenger> = new EventEmitter();

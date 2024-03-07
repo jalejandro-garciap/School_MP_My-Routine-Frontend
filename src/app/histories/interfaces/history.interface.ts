@@ -1,5 +1,5 @@
 import { Passenger } from "src/app/users/interfaces/passenger.interface";
-import { Station } from "./station.interface";
+import { Station } from "../../stations/interfaces/station.interface";
 
 export interface History {
   id?:                number;

@@ -35,6 +35,24 @@ const routes: Routes = [
     canMatch: [canMatchAuth]
   },
   {
+    path: AppRoutes.TRANSPORTS,
+    loadChildren: () => import('./transports/transports.module').then(m => m.TransportsModule),
+    canActivate: [canActivateAuth],
+    canMatch: [canMatchAuth]
+  },
+  {
+    path: AppRoutes.LINES,
+    loadChildren: () => import('./lines/lines.module').then(m => m.LinesModule),
+    canActivate: [canActivateAuth],
+    canMatch: [canMatchAuth]
+  },
+  {
+    path: AppRoutes.STATIONS,
+    loadChildren: () => import('./stations/stations.module').then(m => m.StationsModule),
+    canActivate: [canActivateAuth],
+    canMatch: [canMatchAuth]
+  },
+  {
     path: AppRoutes.ANY_ROUTE,
     redirectTo: AppRoutes.AUTH,
   }

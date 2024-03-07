@@ -18,4 +18,8 @@ export class AppRoutes {
   public static ROLES:string              = 'roles';
   public static HISTORIES:string          = 'histories';
 
+  public static TRANSPORTS:string         = 'transports';
+  public static STATIONS:string           = 'stations';
+  public static LINES:string              = 'lines';
+
 }
