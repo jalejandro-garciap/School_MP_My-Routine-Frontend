@@ -24,8 +24,8 @@ export class NavbarComponent {
     { title: 'Members',           icon: 'face',               url: AppRoutes.MEMBERS },
     { title: 'Histories',         icon: 'schedule',           url: AppRoutes.HISTORIES },
     { title: 'Lines',             icon: 'add_road',           url: AppRoutes.LINES },
-    { title: 'Transports',        icon: 'commute',            url: AppRoutes.TRANSPORTS },
-    { title: 'Stations',          icon: 'pin_drop',           url: AppRoutes.STATIONS }
+    { title: 'Transports',        icon: 'commute',            url: AppRoutes.TRANSPORTS }
+    // { title: 'Stations',          icon: 'pin_drop',           url: AppRoutes.STATIONS }
   ]
 
   constructor(private _authService:AuthService) {}
