@@ -34,8 +34,8 @@ export class StationsService {
     return this._http.post<ApiResponse<Station>>(`${this.BASE_API}/${this.PATH_API}`, station, { headers: this.headers });
   }  
 
-  update(id:string, station:Station) {
-    return this._http.put<ApiResponse<Station>>(`${this.BASE_API}/${this.PATH_API}/${id}`, station, { headers: this.headers });
+  update( station:Station ) {
+    return this._http.put<ApiResponse<Station>>(`${this.BASE_API}/${this.PATH_API}`, station, { headers: this.headers });
   }
   
   deleteById(id:string) {

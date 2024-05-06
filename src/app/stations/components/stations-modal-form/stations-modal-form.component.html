@@ -21,10 +21,10 @@
       </section>
 
       <mat-form-field appearance="fill" class="w-100">
-        <mat-label>Transport</mat-label>
-        <mat-select formControlName="transport">
-          <mat-option *ngFor="let transport of transports" [value]="transport.id">
-            {{transport.name}}
+        <mat-label>Line</mat-label>
+        <mat-select formControlName="line">
+          <mat-option *ngFor="let line of lines" [value]="line.id">
+            {{line.name}}
           </mat-option>
         </mat-select>
       </mat-form-field>

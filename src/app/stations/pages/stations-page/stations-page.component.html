@@ -1,1 +1,18 @@
-<p>stations-page works!</p>
+<div class="container my-5">
+
+  <div class="row gap-2">
+    <div class="col-2 border rounded-2 shadow-sm">
+      <app-stations-modal-navbar (onCreate)="onCreate( $event )">
+      </app-stations-modal-navbar>
+    </div>
+
+    <div class="col px-4 py-2 border bg-white rounded-2 shadow-sm">
+      <app-stations-modal-table 
+        [stations]="stations"
+        (onId)="editById( $event )"
+        (onDeleteById)="onDeleteById( $event )">
+      </app-stations-modal-table>
+    </div>
+  </div>
+
+</div>
