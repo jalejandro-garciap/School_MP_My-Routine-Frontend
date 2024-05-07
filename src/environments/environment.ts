@@ -3,5 +3,5 @@ export const environment = {
   BASE_API: (window.location.protocol === 'http:'
               ? 'http://'
               : 'https://')
-              + 'myroutine.up.railway.app/api',
+              + 'my-routine.up.railway.app/api',
 };
