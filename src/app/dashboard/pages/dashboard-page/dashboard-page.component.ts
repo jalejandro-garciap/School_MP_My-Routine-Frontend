@@ -27,42 +27,39 @@ export class DashboardPageComponent implements OnInit {
     this.loadHistories();
   }
 
-  loadHistories():void {
+  loadHistories(): void {
     this._historiesService.getHistories().subscribe({
       next: (response) => {
-
-        const categoryCount = response.data.reduce((acc, curr) => {
+        const categoryCount = response.data.reduce((acc: {[key: string]: number}, curr) => {
           const category = curr.passenger.category;
           acc[category] = (acc[category] || 0) + 1;
           return acc;
         }, {});
-        
+  
         this._categoryLabels = Object.keys(categoryCount);
         this._categoryData = Object.values(categoryCount);
-
-
-        const stationCount = response.data.reduce((acc, curr) => {
+  
+        const stationCount = response.data.reduce((acc: {[key: string]: number}, curr) => {
           const stationName = curr.station.name;
           acc[stationName] = (acc[stationName] || 0) + 1;
           return acc;
         }, {});
-        
+  
         this._stationLabels = Object.keys(stationCount);
         this._stationData = Object.values(stationCount);
-        
-
-        const exerciseData = response.data.reduce((acc, curr) => {
+  
+        const exerciseData = response.data.reduce((acc: {[key: string]: number}, curr) => {
           const exerciseName = curr.exercise;
           acc[exerciseName] = (acc[exerciseName] || 0) + curr.repetitionsDone;
           return acc;
         }, {});
-        
+  
         this._exerciseLabels = Object.keys(exerciseData);
-        this._exerciseData = Object.values(exerciseData);        
-        
-      }
+        this._exerciseData = Object.values(exerciseData);
+      },
+      error: (err) => console.error('Error fetching histories:', err)
     });
-  }
+  }  
 
   get categoryLabels() {
     return this._categoryLabels;
