@@ -4,21 +4,21 @@
     <div class="col border">
       <div class="d-flex flex-column align-items-center justify-content-center h-100">
         <h1 class="text-center">Category</h1>
-        <app-chart [labels]="labels1" [data]="data1" chartType="doughnut" class="w-100"></app-chart>
+        <app-chart [labels]="categoryLabels" [data]="categoryData" chartType="polarArea" class="w-100"></app-chart>
       </div>
     </div>
 
     <div class="col border">
       <div class="d-flex flex-column align-items-center justify-content-center h-100">
         <h1 class="text-center">Station</h1>
-        <app-chart [labels]="labels2" [data]="data2" chartType="polarArea" class="w-100"></app-chart>
+        <app-chart [labels]="stationLabels" [data]="stationData" chartType="doughnut" class="w-100"></app-chart>
       </div>
     </div>
 
     <div class="col border">
       <div class="d-flex flex-column align-items-center justify-content-center h-100">
         <h1 class="text-center">Exercise</h1>
-        <app-chart [labels]="labels3" [data]="data3" chartType="bar" class="w-100"></app-chart>
+        <app-chart [labels]="exerciseLabels" [data]="exerciseData" chartType="bar" class="w-100"></app-chart>
       </div>
     </div>
 

@@ -10,13 +10,14 @@ import { ExerciseRecord } from 'src/app/users/interfaces/exercise-record.interfa
 })
 export class DashboardPageComponent implements OnInit {
 
-  public _labels1:  string[]  = [];
-  public _data1:    number[]  = [];
+  public _categoryLabels:  string[]  = [];
+  public _categoryData:    number[]  = [];
 
-  public _labels3:  string[]  = [];
-  public _data3:    number[]  = [];
+  public _stationLabels:  string[]  = [];
+  public _stationData:    number[]  = [];
 
-  public completedChallenges: ExerciseRecord[] = [];
+  public _exerciseLabels:  string[]  = [];
+  public _exerciseData:    number[]  = [];
 
   constructor(
     private _historiesService:HistoriesService    
@@ -30,41 +31,61 @@ export class DashboardPageComponent implements OnInit {
     this._historiesService.getHistories().subscribe({
       next: (response) => {
 
-        const exerciseFilter = response.data.map( history => history.exercise);
+        const categoryCount = response.data.reduce((acc, curr) => {
+          const category = curr.passenger.category;
+          acc[category] = (acc[category] || 0) + 1;
+          return acc;
+        }, {});
+        
+        this._categoryLabels = Object.keys(categoryCount);
+        this._categoryData = Object.values(categoryCount);
 
-        const exerciseFilterLabel = ['Squats', 'Push ups'];
-        const squatsCount: number   = exerciseFilter.filter( exercise => exercise === 'Squats').length;
-        const pushUpsCount: number  = exerciseFilter.filter( exercise => exercise === 'Push ups').length;
-        this._labels3 = [...exerciseFilterLabel];
-        this._data3   = [ squatsCount, pushUpsCount ];
 
-        console.log({ exerciseFilter });
+        const stationCount = response.data.reduce((acc, curr) => {
+          const stationName = curr.station.name;
+          acc[stationName] = (acc[stationName] || 0) + 1;
+          return acc;
+        }, {});
+        
+        this._stationLabels = Object.keys(stationCount);
+        this._stationData = Object.values(stationCount);
+        
+
+        const exerciseData = response.data.reduce((acc, curr) => {
+          const exerciseName = curr.exercise;
+          acc[exerciseName] = (acc[exerciseName] || 0) + curr.repetitionsDone;
+          return acc;
+        }, {});
+        
+        this._exerciseLabels = Object.keys(exerciseData);
+        this._exerciseData = Object.values(exerciseData);        
+        
       }
     });
   }
 
-  get labels1() {
-    return this._labels1;
+  get categoryLabels() {
+    return this._categoryLabels;
   }
 
-  get data1() {
-    return this._data1;
+  get categoryData() {
+    return this._categoryData;
   }
 
-  get labels2() {
-    return ['Periferico Norte', 'Circunvalacion Country', 'CUCEI', 'Plaza Universidad', 'Patria', 'Zapopan Centro', 'Lazaro Cardenas'];
+  get stationLabels() {
+    return this._stationLabels;
   }
 
-  get data2() {
-    return [1,3,11,1,1,2,1];
+  get stationData() {
+    return this._stationData;
   }
 
-  get labels3() {
-    return this._labels3;
+  get exerciseLabels() {
+    return this._exerciseLabels;
   }
 
-  get data3() {
-    return this._data3;
+  get exerciseData() {
+    return this._exerciseData;
   }
 
 }
